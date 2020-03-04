@@ -1,11 +1,14 @@
-# Título del trabajo
+# ASCENSOR
 
-Descripción breve del proyecto a realizar (2-3 frases).
+Queremos realizar un ascensor con arduino que suba y baje con la ayuda de un servomotor unido a un sistema mecanico, para trasladar el movimiento de rotación del servomotor a un movimiento lineal de subida o bajada.
 
-## Integrantes del equipo
+## Maria Ortega Monge 54777 y Laura Villajos Mateo 54904
+Maria Ortega Monge con usuario de Github maria.ortega.monge@alumnos.uom.es
+Laura Villajos Mateo con usuario de Github lauravillajosmateo@alumnos.upm.es
 
-Nombres, apellidos, y usuario GitHub de los integrantes del equipo.
+## OBJETIVOS
 
-## Objetivos del trabajo
-
-Lista de los objetivos que se persiguen con el trabajo propuesto.
+Al objetivo principal como se ha mencionado antes es conseguir el movimiento de subida y bajada con un servomotor.
+También queremos añadirle una especie de semáforo que indique cuando se está moviendo (azul), cuando esta en el primer piso(verde) y cuando esta en el segundo piso (rojo).
+Adicionalmente queremos ponerle un altavoz con sonido que emita este sonido cuando este en movimiento y deje de emitirlo cuando pare.
+Y unos botones que serían los encargados de mandarle la señal al servomotor de que suba o baje el ascensor.
