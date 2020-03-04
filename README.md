@@ -3,8 +3,8 @@
 Queremos realizar un ascensor con arduino que suba y baje con la ayuda de un servomotor unido a un sistema mecanico, para trasladar el movimiento de rotación del servomotor a un movimiento lineal de subida o bajada.
 
 ## Maria Ortega Monge 54777 y Laura Villajos Mateo 54904
-Maria Ortega Monge con usuario de Github mariaortegamonge@alumnos.uom.es
-Laura Villajos Mateo con usuario de Github lauravillajosmateo@alumnos.upm.es
+Maria Ortega Monge con usuario de Github mariaortegamonge.
+Laura Villajos Mateo con usuario de Github lauravillajosmateo.
 
 ## OBJETIVOS
 
