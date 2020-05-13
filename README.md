@@ -18,7 +18,7 @@ Y unos botones que serían los encargados de mandarle la señal al servomotor de
 El proyecto dispone de un control en pantalla para iniciar todo el proceso. Además, cuenta con un servomotor, varios LEDs de diferentes colores, un buzzer para emirtir sonidos, dos pulsadores de subida y bajada y una pantalla que incluirá información acerca del trabajo.
 
 ## SUBPROGRAMAS (FUNCIONES)
-Contamos con cuatro funciones: función subir, función bajar, función para, y la función setup.
+Contamos con cuatro funciones: función subir, función bajar y función para.
 
 El procesamiento de la función subir es: se activa mediante el accionamiento de un pulsador. Esto hace que el servomotor gire un numero determinado de grados mediante un bucle for y además activa el LED correspondiente a ese movimiento y el sonido. El giro del servomotor permite mediante un mecanismo de cuerda y polea que el ascensor suba.
 
@@ -26,6 +26,58 @@ El procesamiento de la función bajar es: al contrario que la función subir, el
 
 El procesamiento de la funcion para es: Cuando termina la función subir o la función bajar se activa esta función para hacer que el servomotor no haga ningún movimiento y el ascensor se quede quieto en el piso que esté, para el sonido y enciende el LED que le corresponde a este "movimiento".
 
-Por último, la función setup es la función que utilizamos para escribir en la pantalla digital. Tiene dos partes, una para escribir en la primera fila de la pantalla y otra para escribir en la segunda fila.
+
+## Primera Versión 
+
+#include <Servo.h>
+Servo myservo;
+const int pinBuzzer = 12;
+int RS = 4, t E = 2, D4 = 1, D5 = 10, D6 = 13,
+D7 = 8, VO = 3;
+const int  inPin1=5;//
+const int  inPin2=7;//
+const int  ROJOPin=9;
+const int  VERDEPin=10;
+
+void baja ()// variamos los valores de giro para que giren las poleas
+{ 
+digitalWrite(9,LOW);
+digitalWrite(10,LOW);
+ for(int i =0;i<95;i=i+2)
+ {myservo.write(i);
+  delay(100);
+ }
+ delay(1000); 
+}
+
+oid sube()// variamos los valores de giro para
+ que giren al lado contrario
+{
+digitalWrite(9,LOW);
+digitalWrite(10,LOW);
+ for(int i=90;i>=0;i=i-2)
+ {
+  myservo.write(i);
+  delay(100);
+ }
+ delay(1000);
+}
+
+void para () //la utilizaremos al inicio y cuando esté bajando y 
+se pulse el botón subir.
+{digitalWrite(inPin1,LOW);//ponemos los pines  6 y 7 en 
+balor bajo
+digitalWrite(inPin2,LOW);      
+}
+
+void loop() {
+para();
+  sube();
+  para();
+  baja();
+  }
+
+
+
 
 
