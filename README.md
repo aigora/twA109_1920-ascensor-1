@@ -93,13 +93,18 @@ int main(void)
     
    SerialPort *arduino;
     // Puerto serie en el que esta¡ Arduino
-    char* portName = "\\\\.\\COM3";
-    // Buffer para datos procedentes de Arduino
-    char incomingData[MAX_DATA_LENGTH];
+    
+   char* portName = "\\\\.\\COM3";
+    
+   // Buffer para datos procedentes de Arduino
+   
+   char incomingData[MAX_DATA_LENGTH];
     // Crear estructura de datos del puerto serie
-    arduino = (SerialPort *)malloc(sizeof(SerialPort));
+    
+   arduino = (SerialPort *)malloc(sizeof(SerialPort));
     // Apertura del puerto serie
-    Crear_Conexion(arduino,portName);
+    
+   Crear_Conexion(arduino,portName);
     autoConnect(arduino,incomingData);
     return 0;
 }
@@ -108,21 +113,25 @@ void autoConnect(SerialPort *arduino,char *incomingData)
     char sendData = 0;
     int readResult;
     // Espera la conexión con Arduino
-    while (!isConnected(arduino))
+    
+   while (!isConnected(arduino))
     {
         Sleep(100);
         Crear_Conexion(arduino,arduino->portName);
     }
     //Comprueba si arduino esta conectado
-    if (isConnected(arduino))
+    
+   if (isConnected(arduino))
     {
         printf ("Conectado con Arduino en el puerto %s\n",arduino->portName);
     }
     // Bucle de la aplicacion
-    printf ("0 - OFF, 1 - ON, 9 - SALIR\n");
+    
+   printf ("0 - OFF, 1 - ON, 9 - SALIR\n");
     scanf("%c",&sendData);
     while (isConnected(arduino) && sendData!='9')
-    {
+    
+   {
         sendData = getch();
         writeSerialPort(arduino,&sendData, sizeof(char));
         readResult=readSerialPort(arduino,incomingData,MAX_DATA_LENGTH);
@@ -130,7 +139,8 @@ void autoConnect(SerialPort *arduino,char *incomingData)
             printf ("%s",incomingData);
         sleep(10);
     }
-    if (!isConnected(arduino))
+    
+   if (!isConnected(arduino))
         printf ("Se ha perdido la conexión con Arduino\n");
 }
 
@@ -164,11 +174,13 @@ int pa=LOW;
 //DECLARACION DE FUNCIONES
 
 void baja ()// variamos los valores de giro para baje la plataforma
+
 {
   tone(pinBuzzer, 650);
   digitalWrite(8,HIGH);
 digitalWrite(9,LOW);
 digitalWrite(10,LOW);
+
  for(int i =0;i<95;i=i+2)
  {
   myservo.write(i);
@@ -180,11 +192,13 @@ digitalWrite(10,LOW);
 }
 
 void sube()// variamos los valores de giro para suba
+
 {
    tone(pinBuzzer, 650);
 digitalWrite(8,HIGH);
 digitalWrite(9,LOW);
 digitalWrite(10,LOW);
+
  for(int i=90;i>=0;i=i-2)
  {
   myservo.write(i);
@@ -196,9 +210,11 @@ digitalWrite(10,LOW);
 }
 
 void para () //funcion para que el motor no se mueva;la utilizaremos al inicio y mientras no se activen los botones de subida o bajada
+
 {
-	digitalWrite(inPin1,LOW);//ponemos los pines  6 y 7 en balor bajo
-	digitalWrite(inPin2,LOW);
+digitalWrite(inPin1,LOW);//ponemos los pines  6 y 7 en balor bajo
+	
+digitalWrite(inPin2,LOW);
          
 }
 
@@ -212,8 +228,10 @@ void setup() {
     lcd.setCursor (0,1);
     lcd.print("ascensor");
   Serial.begin(9600);
+  
   pinMode(pinBuzzer,OUTPUT);
 myservo.attach(6);
+
 pinMode(inPin1,INPUT);
 pinMode(inPin2,INPUT);
   pinMode(8,OUTPUT); //Rojo
@@ -226,27 +244,32 @@ void loop() {
  
 para();
 	pa=LOW;// inicializamos la variable que almacena el valor del pulsador a un valor bajo
-	while(pa==LOW)//mientras el valor de pa siga siendo bajo (no lo hayamos pulsado)seguimos leyendo su estado
+	
+while(pa==LOW)//mientras el valor de pa siga siendo bajo (no lo hayamos pulsado)seguimos leyendo su estado
 	{
 		pa = digitalRead(inPin1);//esta funcion lee el estado del pin PA y cuando lo hayamos pulsado cambiará de LOW a HIGH y saltará del bucle
 		//SEMÁFORO EN ROJO MIENTRAS NO HAYA ACTIVACION DE BOTONES
-		digitalWrite(9,HIGH);
-		digitalWrite(8,LOW);
-		digitalWrite(10,LOW);
+		
+digitalWrite(9,HIGH);
+digitalWrite(8,LOW);
+digitalWrite(10,LOW);
 		}
 pa=LOW;//reinicializamos pa
 
   sube();
   para();
 //lo primero que hacemos es tener el motor parado para inicializar bajos los niveles de MAPin y MCPin
-	pa=LOW;// inicializamos la variable que almacena el valor del pulsador a un valor bajo
-	while(pa==LOW)//mientras el valor de pa siga siendo bajo (no lo hayamos pulsado)seguimos leyendo su estado
+
+pa=LOW;// inicializamos la variable que almacena el valor del pulsador a un valor bajo
+
+while(pa==LOW)//mientras el valor de pa siga siendo bajo (no lo hayamos pulsado)seguimos leyendo su estado
 	{
 		pa = digitalRead(inPin2);//esta funcion lee el estado del pin PA y cuando lo hayamos pulsado cambiará de LOW a HIGH y saltará del bucle
 		//SEMÁFORO EN ROJO MIENTRAS NO HAYA ACTIVACION DE BOTONES
-		digitalWrite(10,HIGH);
-		digitalWrite(9,LOW);
-		digitalWrite(8,LOW);
+		
+digitalWrite(10,HIGH);
+digitalWrite(9,LOW);
+digitalWrite(8,LOW);
 		}
 	pa=LOW;//reinicializamos pa
 
