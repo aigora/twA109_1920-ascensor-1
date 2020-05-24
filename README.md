@@ -77,7 +77,7 @@ para();
   baja();
   }
 
-##VERSION DEFINITIVA
+## VERSION DEFINITIVA
 1: Conexión al C.
 
 #include <stdio.h>
@@ -91,7 +91,7 @@ void autoConnect(SerialPort *arduino,char*);
 int main(void)
 {
     
-    SerialPort *arduino;
+   SerialPort *arduino;
     // Puerto serie en el que esta¡ Arduino
     char* portName = "\\\\.\\COM3";
     // Buffer para datos procedentes de Arduino
@@ -233,9 +233,8 @@ para();
 		digitalWrite(9,HIGH);
 		digitalWrite(8,LOW);
 		digitalWrite(10,LOW);
-		
-	}
-	pa=LOW;//reinicializamos pa
+		}
+pa=LOW;//reinicializamos pa
 
   sube();
   para();
@@ -248,8 +247,7 @@ para();
 		digitalWrite(10,HIGH);
 		digitalWrite(9,LOW);
 		digitalWrite(8,LOW);
-		
-	}
+		}
 	pa=LOW;//reinicializamos pa
 
   baja();
